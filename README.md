@@ -6,42 +6,62 @@ Programming-Assignment-2
 
 makeCacheMatrix <- function(x = numeric()) {
         cache <- NULL
+        
         ## Store a matrix
+        
         setmatrix <- function(y) {
                 x <<- y
+        
         ## Since the matrix is assigned a new value, flush the cache
+        
                 cache <<- NULL
         }
+        
         ## Returns the stored matrix
+        
         getmatrix <- function() {
                 x
         }
+        
         ## Caches the inverse of a matrix/the given argument
+        
         cacheinverse <- function(solve) {
                 cache <<- solve
         }
+        
         ## Gets the cached value of the inverse 
+        
         getinverse <- function() {
                 cache
         }
+        
         ## Returns a list where the elements of the list is a function
+        
         list(setmatrix = setmatrix, getmatrix = getmatrix, cacheinverse = cacheinverse, getinverse = getinverse)
 }
 
 cacheSolve <- function(y, ...) {
+        
         ## Gets the cached value
+        
         inverse <- y$getinverse()
+        
         ## If a cached value exists return it 
+        
         if(!is.null(inverse)) {
                 message("getting cached data")
                 return(inverse)
         }
+        
         ## cc gets the matrix-caclulate the inverse and store it in the cache
+        
         data <- y$getmatrix()
         inverse <- solve(data)
         y$cacheinverse(inverse)
         inverse 
+        
         ## Finally, returns the inverse of the matrix
+
 }
 
 ##### Some commands ##########################################################
