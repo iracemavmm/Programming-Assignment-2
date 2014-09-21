@@ -67,6 +67,14 @@ cacheSolve <- function(y, ...) {
 
 }
 
+valuematrix <- makeCacheMatrix( matrix(c(1,4,12,26), nrow = 2, ncol = 2) );
+summary(valuematrix);
+valuematrix$getmatrix();
+cacheSolve(valuematrix)
+# the 2nd time we run the function,we get the cached value
+cacheSolve(valuematrix)
+
+
 ##### Some commands ##########################################################
 ######## solve                                                               #
 ##solve- This generic function solves the equation a %*% x = b for x, where b#
@@ -83,11 +91,6 @@ cacheSolve <- function(y, ...) {
 ## `LINPACK` logical. Defunct and ignored (with a warning for a true value). #
 ##  `...` further arguments passed to or from other methods                  #
 ##############################################################################
- 
-
-valuematrix <- makeCacheMatrix( matrix(c(1,4,12,26), nrow = 2, ncol = 2) );
-summary(valuematrix);
-
 ##############################################################################
 # Matrix 2x2-numbers in the colunm one are 1 and 4,in the colunm two,12 and26#
 #####  summary  ##############################################################
@@ -102,28 +105,18 @@ summary(valuematrix);
 # cacheInverse 1      -none- function                                        #
 # getInverse   1      -none- function                                        #
 ##############################################################################
-
-valuematrix$getmatrix();
-
 ##############################################################################
 ###Results obtained                                                          #
 ##      [,1] [,2]                                                            #
 ## [1,]    1   12                                                            #
 ## [2,]    4   26                                                            #
 ##############################################################################
-
-cacheSolve(valuematrix)
-
 ##############################################################################
 #Results obtained                                                            #
 #         [,1]        [,2]                                                   #
 # [1,] -1.1818182   0.54545455                                               #
 # [2,]  0.1818182  -0.04545455                                               #
 ##############################################################################
-
-# the 2nd time we run the function,we get the cached value
-cacheSolve(valuematrix)
-
 ##############################################################################
 #Results obtained                                                            #
 #getting cached data                                                         #
